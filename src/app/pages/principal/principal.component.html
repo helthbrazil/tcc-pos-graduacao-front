@@ -1,0 +1,55 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" (click)="drawer.toggle()"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Galeria de imagens</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
+        aria-label="Example icon-button with share icon">
+        <div mat-card-avatar class="example-header-image"></div>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <button (click)="deslogar()" mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Deslogar</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer opened="opened" #drawer class="example-sidenav" mode="side">
+        <mat-selection-list [multiple]="false">
+
+            <mat-list-item role="listitem">
+                <button class="icone-menu" [routerLink]="['galeria']" routerLinkActive="router-link-active"
+                    color="accent" matTooltip="Galeria de fotos" matTooltipPosition="right" mat-icon-button
+                    class="icone-menu" aria-label="Example icon-button with heart icon">
+                    <mat-icon>insert_photo</mat-icon>
+                </button>
+            </mat-list-item>
+
+            <mat-list-item role="listitem">
+                <button class="icone-menu" [routerLink]="['configuracoes']" color="accent" matTooltip="Configurações"
+                    matTooltipPosition="right" mat-icon-button class="icone-menu"
+                    aria-label="Example icon-button with heart icon">
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </mat-list-item>
+
+            <mat-list-item role="listitem">
+                <button class="icone-menu" [routerLink]="['ajuda']" color="accent" matTooltip="Informações"
+                    matTooltipPosition="right" mat-icon-button aria-label="Example icon-button with heart icon">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-list-item>
+
+        </mat-selection-list>
+    </mat-drawer>
+
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>

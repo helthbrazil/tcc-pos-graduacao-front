@@ -9,6 +9,12 @@ import { GaleriaComponent } from './pages/galeria/galeria.component';
 import { AjudaComponent } from './pages/ajuda/ajuda.component';
 import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
 import { FotografiaComponent } from './components/fotografia/fotografia.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LoginComponent } from './pages/login/login.component';
+import { PrincipalComponent } from './pages/principal/principal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Interceptor } from './interceptor/interceptor/interceptor.module';
 
 @NgModule({
   declarations: [
@@ -16,12 +22,19 @@ import { FotografiaComponent } from './components/fotografia/fotografia.componen
     GaleriaComponent,
     AjudaComponent,
     ConfiguracoesComponent,
-    FotografiaComponent
+    FotografiaComponent,
+    LoginComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
+    Interceptor,
+    NgxSkeletonLoaderModule,
+    HttpClientModule,
     BrowserAnimationsModule
   ],
   providers: [],

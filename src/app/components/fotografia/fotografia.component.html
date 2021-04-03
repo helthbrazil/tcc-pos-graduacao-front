@@ -1,8 +1,14 @@
 <mat-card class="example-card">
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
+    <img mat-card-image *ngIf="mostrarImagem" [src]="dado?.src" alt="Photo of a Shiba Inu">
+    <ngx-skeleton-loader *ngIf="!mostrarImagem" count="1" [theme]="{ 
+      'border-radius': '5px',
+      pulse: true,
+      height: '378px'
+    }"></ngx-skeleton-loader>
+
+    <mat-card-content *ngIf="mostrarImagem">
         <p>
-            The Shiba
+            Autor {{dado?.author}}
         </p>
     </mat-card-content>
 </mat-card>

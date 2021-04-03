@@ -9,6 +9,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -16,11 +19,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   imports: [
     CommonModule,
     MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatTooltipModule, MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule, MatMenuModule, MatInputModule, MatSnackBarModule,
   ],
   exports: [
     MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatTooltipModule, MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule, MatMenuModule, MatInputModule, MatSnackBarModule
   ]
 })
 export class MaterialModule { }
