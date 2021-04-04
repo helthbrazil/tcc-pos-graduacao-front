@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { User } from 'src/app/shared/services/models/user';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-login',
@@ -30,9 +31,10 @@ export class LoginComponent implements OnInit {
   });
   formHasError = false;
   constructor(private fb: FormBuilder, private loginService: LoginService,
-    private router: Router, private snackBar: MatSnackBar) { }
+    private router: Router, private snackBar: MatSnackBar, private deviceDetector: DeviceDetectorService) { }
 
   ngOnInit(): void {
+    this.isMobile = this.deviceDetector.isMobile();
   }
 
   logForm() {

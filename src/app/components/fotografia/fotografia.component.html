@@ -1,7 +1,7 @@
-<mat-card class="example-card">
+<mat-card [class.mat-elevation-z4]="true" class="example-card">
     <img mat-card-image *ngIf="mostrarImagem" [src]="dado?.src" alt="Photo of a Shiba Inu">
     <ngx-skeleton-loader *ngIf="!mostrarImagem" count="1" [theme]="{ 
-      'border-radius': '5px',
+      'border-radius': '10px',
       pulse: true,
       height: '378px'
     }"></ngx-skeleton-loader>

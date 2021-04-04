@@ -14,7 +14,6 @@ export class GaleriaComponent implements OnInit {
     this.fotografias = new Array<any>();
     const qtdImagens = 15;
     
-    debugger
     for(let i = 0 ; i < qtdImagens; i++){
       this.fotografias.push({src: `https://picsum.photos/600/600?random=${i+1}`});
     }
