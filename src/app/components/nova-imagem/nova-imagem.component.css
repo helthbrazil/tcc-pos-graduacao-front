@@ -1,0 +1,51 @@
+.nova-mensagem {
+    position: fixed;
+    background-color: #f2f2f2;
+    z-index: 2147483647;
+    bottom: 0px !important;
+    right: 40px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .example-form-field {
+        padding-top: 10px;
+        width: 200px;
+      }
+    
+      .custom-toolbar {
+        padding: 0px;
+        height: 30px;
+      }
+    
+    .area-arquivo {
+        background-color: #f2f2f2;
+        width: auto;
+        border: 5px dotted #e8e8e8;
+        height: 200px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .example-form-field {
+        padding-top: 10px;
+        width: 400px;
+      }
+    
+      .custom-toolbar {
+        padding: 0px;
+        height: 30px;
+      }
+    
+     .area-arquivo {
+        background-color: #f2f2f2;
+        width: auto;
+        border: 5px dotted #e8e8e8;
+        height: 400px;
+     } 
+}
+
+
+
+   

@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 export class LoginService {
   private httpClientLogin: HttpClient;
 
-  private readonly URL_LOGIN = 'https://springboot-jwt-brazil.herokuapp.com/login';
-  // private readonly URL_LOGIN = 'http://localhost:8080/login';
+  // private readonly URL_LOGIN = 'https://springboot-jwt-brazil.herokuapp.com/login';
+  private readonly URL_LOGIN = 'http://localhost:8080/login';
 
-  private readonly URL_ISLOGGED = 'https://springboot-jwt-brazil.herokuapp.com/isLogged';
-  // private readonly URL_ISLOGGED = 'http://localhost:8080/isLogged';
+  // private readonly URL_ISLOGGED = 'https://springboot-jwt-brazil.herokuapp.com/isLogged';
+  private readonly URL_ISLOGGED = 'http://localhost:8080/aws/isLogged';
 
   constructor(handler: HttpBackend, private httpClient: HttpClient, private router: Router) {
     this.httpClientLogin = new HttpClient(handler);
@@ -32,7 +32,7 @@ export class LoginService {
     });
   }
 
-  isLogged(): Observable<boolean> {    
+  isLogged(): Observable<boolean> {
     return this.httpClient.get<boolean>(this.URL_ISLOGGED);
   }
 }

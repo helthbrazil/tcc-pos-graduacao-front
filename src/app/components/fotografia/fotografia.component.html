@@ -1,14 +1,15 @@
-<mat-card [class.mat-elevation-z4]="true" class="example-card">
-    <img mat-card-image *ngIf="mostrarImagem" [src]="dado?.src" alt="Photo of a Shiba Inu">
+<mat-card (mouseover)="hover = true" (mouseout)="hover = false" [class.mat-elevation-z4]="true"
+    [class.mat-elevation-z10]="hover" class="example-card">
     <ngx-skeleton-loader *ngIf="!mostrarImagem" count="1" [theme]="{ 
-      'border-radius': '10px',
-      pulse: true,
-      height: '378px'
+        'border-radius': '10px',
+        pulse: true,
+        height: '378px'
     }"></ngx-skeleton-loader>
 
     <mat-card-content *ngIf="mostrarImagem">
+        <img mat-card-image *ngIf="mostrarImagem" [src]="dado?.src" alt="Photo of a Shiba Inu">
         <p>
-            Autor {{dado?.author}}
+            {{dado?.descricao}}
         </p>
     </mat-card-content>
 </mat-card>

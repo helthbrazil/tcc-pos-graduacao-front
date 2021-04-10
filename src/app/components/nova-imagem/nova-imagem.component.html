@@ -1,0 +1,29 @@
+<div [class.mat-elevation-z10]="true" *ngIf="mostrarComponente?.mostrar" class="nova-mensagem">
+    <mat-toolbar class="custom-toolbar">
+        <span>Inserir novas imagens</span>
+        <span class="example-spacer"></span>
+        <button matTooltip="Fechar" matTooltipPosition="below" (click)="sair()" class="one" mat-icon-button>
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-form-field class="example-form-field">
+        <mat-label>Informar descrição imagem</mat-label>
+        <input id="descricao" autocomplete="off" matInput type="text" [(ngModel)]="value">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <div class="area-arquivo">
+
+    </div>
+    <mat-toolbar style="padding-top: 10px;" class="custom-toolbar">
+        <mat-progress-bar style="width: 100%;" *ngIf="mostrarCarregando" color="warn" mode="indeterminate"></mat-progress-bar>
+        <span class="example-spacer"></span>
+        <button (click)="enviarImagens()" matTooltip="Enviar imagens" matTooltipPosition="left" mat-icon-button color="primary"
+            aria-label="Example icon button with a home icon">
+            <mat-icon>schedule_send</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>

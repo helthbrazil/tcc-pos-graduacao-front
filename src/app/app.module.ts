@@ -15,6 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Interceptor } from './interceptor/interceptor/interceptor.module';
+import { NovaImagemComponent } from './components/nova-imagem/nova-imagem.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Interceptor } from './interceptor/interceptor/interceptor.module';
     ConfiguracoesComponent,
     FotografiaComponent,
     LoginComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    NovaImagemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,15 @@
 .example-card {
     max-width: 600px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    opacity: 1 !important;
   }
   
+  .example-card :hover {
+    opacity: 0.95 !important;
+    cursor: pointer;
+  }
+
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;

@@ -7,13 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FotografiaComponent implements OnInit {
   @Input() dado: any;
+  hover = false;
   mostrarImagem = false;
   constructor() { }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.mostrarImagem = true;
-    }, 2000);
+    }, 1000);
   }
 
 }
