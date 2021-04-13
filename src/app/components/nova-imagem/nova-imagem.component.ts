@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DocumentosService } from 'src/app/shared/services/documentos.service';
 
 @Component({
   selector: 'app-nova-imagem',
@@ -12,41 +13,70 @@ export class NovaImagemComponent implements OnInit {
   mostrarCarregando = false;
   @Output() sairEvent = new EventEmitter();
   @Output() buscarImagens = new EventEmitter();
-  constructor(private _snackBar: MatSnackBar) { }
+  listaAnexos: Array<File>;
+
+  constructor(private _snackBar: MatSnackBar,
+    private documentosService: DocumentosService) { }
 
   ngAfterViewChecked(changes: SimpleChanges): void {
-    setTimeout(() => {
+    /* setTimeout(() => {
       if (this.mostrarComponente['mostrar']) {
         const descricao = document.getElementById('descricao');
         if (descricao) {
           descricao.focus();
         }
       }
-    }, 100);
+    }, 1000); */
   }
 
   ngOnInit(): void {
-    
+    this.listaAnexos = new Array<File>();
+  }
+
+  adicionarArquivos(fileList: FileList) {
+    debugger
+    let quantidadeArquivos = fileList.length;
+    if (this.listaAnexos) {
+      for (let i = 0; i < quantidadeArquivos; i++) {
+        if (!this.listaAnexos.some(item => item.name === fileList[i].name)) {
+          this.listaAnexos.push(fileList[i]);
+        }
+      }
+    }
   }
 
   enviarImagens() {
-    if (this.value && this.value !== "") {
+    if (this.listaAnexos && this.listaAnexos.length > 0) {
       this.mostrarCarregando = true;
-      setTimeout(() => {
+      this.documentosService.enviarImagens(this.listaAnexos).subscribe(res => {
         this.mostrarCarregando = false;
         this.openSnackBar('Imagens enviadas com sucesso', undefined);
-        this.buscarImagens.emit(this.value);
-        this.value = "";
-      }, 2000);
-    } else {
-      this.openSnackBar(`Descrição da mensagem é obrigatória`, undefined);
+        this.buscarImagens.emit(true);
+      }, err => {
+        this.mostrarCarregando = false;
+        this.openSnackBar('Erro ao enviar imagens', undefined);
+      });
+    }
+  }
+
+  removerAnexo(file: File) {
+    const index = this.listaAnexos.findIndex(item => item.name === file.name);
+    if (index !== -1) {
+      this.listaAnexos.splice(index, 1);
     }
   }
 
   sair() {
     // Limpar tudo
-    this.value = "";
-    this.mostrarComponente['mostrar'] = false;
+    const novaImagem = document.getElementById('novaImagem');
+    if (novaImagem) {
+      novaImagem.classList.add('animate__bounceOutDown');
+      setTimeout(() => {
+        this.mostrarComponente['mostrar'] = false;
+        novaImagem.classList.remove('animate__bounceOutDown');
+        this.listaAnexos = new Array<File>();
+      }, 500);
+    }
   }
 
   openSnackBar(message: string, action: string) {

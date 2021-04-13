@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Imagem } from 'src/app/shared/models/imagem';
 import { DocumentosService } from 'src/app/shared/services/documentos.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { DocumentosService } from 'src/app/shared/services/documentos.service';
   styleUrls: ['./galeria.component.css']
 })
 export class GaleriaComponent implements OnInit {
-  fotografias: Array<any>;
+  fotografias: Array<Imagem>;
   mostrarAdicionarImagem = {
     mostrar: false
   };
@@ -16,23 +17,34 @@ export class GaleriaComponent implements OnInit {
   constructor(private documentosService: DocumentosService) { }
 
   ngOnInit(): void {
-    this.fotografias = new Array<any>();
-    const qtdImagens = 8;
+    this.buscarImagens();
+  }
 
-    for (let i = 0; i < qtdImagens; i++) {
-      this.flag = i;
-      this.fotografias.push({ src: `https://picsum.photos/600/600?random=${i + 1}`, descricao: `Descrição teste (${i + 1})` });
-    }
+  buscarImagens(event?) {
+    this.documentosService.buscarImagens().subscribe(imagens => {
+      this.mostrarAdicionarImagem.mostrar = false;
+      this.fotografias = imagens;
+    });
   }
 
   adicionarNovaImagem() {
     this.mostrarAdicionarImagem['mostrar'] = true;
   }
 
-  buscarImagens(event) {
-    this.flag++;
-    this.fotografias.unshift({ src: `https://picsum.photos/600/600?random=${this.flag + 1}`, descricao: `${event}` });
-    this.mostrarAdicionarImagem['mostrar'] = false;
+  excluirImagem(item: Imagem) {
+    const itemCard = document.getElementById(`card-${item.id}`);
+    if (itemCard) {
+      itemCard.classList.add('animate__animated');
+      itemCard.classList.add('animate__bounceOut');
+      itemCard.classList.add('animate__fast');
+      setTimeout(() => {
+        const index = this.fotografias.findIndex(itemLista => itemLista.id === item.id);
+        if (index !== -1) {
+          this.fotografias.splice(index, 1);
+        }
+      }, 800);
+    }
   }
 
 }
+

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/shared/services/login.service';
-import { User } from 'src/app/shared/services/models/user';
+import { User } from 'src/app/shared/models/user';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({

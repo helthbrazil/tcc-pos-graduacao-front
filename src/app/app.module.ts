@@ -16,6 +16,7 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Interceptor } from './interceptor/interceptor/interceptor.module';
 import { NovaImagemComponent } from './components/nova-imagem/nova-imagem.component';
+import { DragDropDirective } from './shared/directives/drag-drop.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NovaImagemComponent } from './components/nova-imagem/nova-imagem.compon
     FotografiaComponent,
     LoginComponent,
     PrincipalComponent,
-    NovaImagemComponent
+    NovaImagemComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,20 @@
-<mat-card (mouseover)="hover = true" (mouseout)="hover = false" [class.mat-elevation-z4]="true"
-    [class.mat-elevation-z10]="hover" class="example-card">
+<mat-card id="card-{{dado?.id}}" (mouseenter)="hover = true" (mouseleave)="hover = false" [class.mat-elevation-z4]="true"
+    [class.mat-elevation-z10]="hover" class="example-card"  >
     <ngx-skeleton-loader *ngIf="!mostrarImagem" count="1" [theme]="{ 
         'border-radius': '10px',
         pulse: true,
         height: '378px'
     }"></ngx-skeleton-loader>
 
-    <mat-card-content *ngIf="mostrarImagem">
+    <mat-card-content *ngIf="mostrarImagem" class="animate__animated animate__fadeIn">
         <img mat-card-image *ngIf="mostrarImagem" [src]="dado?.src" alt="Photo of a Shiba Inu">
+        <button (click)="excluirImagem()" matTooltip="Excluir imagem" matTooltipPosition="below" *ngIf="hover" class="button-delete animate__animated animate__bounceIn animate__fast" mat-mini-fab color="warn" aria-label="Example icon button with a plus one icon">
+            <mat-icon>remove</mat-icon>
+        </button>
         <p>
-            {{dado?.descricao}}
+            {{dado?.id}}
         </p>
     </mat-card-content>
+
+
 </mat-card>

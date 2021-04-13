@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -21,11 +22,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatTooltipModule, MatCardModule,
-    MatProgressBarModule, MatMenuModule, MatInputModule, MatSnackBarModule, MatDividerModule
+    MatProgressBarModule, MatMenuModule, MatInputModule, MatSnackBarModule, MatDividerModule, MatChipsModule
   ],
   exports: [
     MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatTooltipModule, MatCardModule,
-    MatProgressBarModule, MatMenuModule, MatInputModule, MatSnackBarModule, MatDividerModule
+    MatProgressBarModule, MatMenuModule, MatInputModule, MatSnackBarModule, MatDividerModule, MatChipsModule
   ]
 })
 export class MaterialModule { }

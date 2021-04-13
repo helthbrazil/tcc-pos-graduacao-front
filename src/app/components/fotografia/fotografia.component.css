@@ -18,3 +18,10 @@
   img {
     background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
   }
+
+  .button-delete{
+    position: absolute;
+    margin-top: 0px;
+    z-index: 99999999;
+    right: 10px
+  }

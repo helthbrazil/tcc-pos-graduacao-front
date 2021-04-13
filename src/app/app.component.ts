@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { LoginService } from './shared/services/login.service';
 
 @Component({
@@ -10,18 +11,20 @@ import { LoginService } from './shared/services/login.service';
 })
 export class AppComponent {
 
-  constructor(private loginService: LoginService, private router: Router){}
- 
+  constructor(private loginService: LoginService, private router: Router) { }
+
   ngOnInit(): void {
     this.isLogged();
   }
 
   private isLogged() {
-    this.loginService.isLogged().subscribe(res => {
-      console.log('está logado');
-    }, err => {
-      console.error('Não está logado');
-      this.router.navigate(['/login']);
-    });
+    if (!environment.mockup) {
+      this.loginService.isLogged().subscribe(res => {
+        console.log('está logado');
+      }, err => {
+        console.error('Não está logado');
+        this.router.navigate(['/login']);
+      });
+    }
   }
 }

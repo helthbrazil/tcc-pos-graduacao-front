@@ -4,7 +4,7 @@
     z-index: 2147483647;
     bottom: 0px !important;
     right: 40px;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
     padding: 20px;
 }
 
@@ -22,6 +22,8 @@
     .area-arquivo {
         background-color: #f2f2f2;
         width: auto;
+        text-align: center !important;
+        padding: 80px 0;
         border: 5px dotted #e8e8e8;
         height: 200px;
     }
@@ -41,10 +43,18 @@
      .area-arquivo {
         background-color: #f2f2f2;
         width: auto;
+        padding: 180px 0;
+        text-align: center !important;
         border: 5px dotted #e8e8e8;
         height: 400px;
      } 
 }
+
+mat-chip.my-class {
+  height: auto; 
+  line-height: 1.1em; 
+}
+
 
 
 

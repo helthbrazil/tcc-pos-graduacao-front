@@ -1,4 +1,5 @@
-<div [class.mat-elevation-z10]="true" *ngIf="mostrarComponente?.mostrar" class="nova-mensagem">
+<div [class.mat-elevation-z10]="true" id="novaImagem" *ngIf="mostrarComponente?.mostrar"
+    class="nova-mensagem example-form-field animate__animated animate__bounceInUp animate__fast">
     <mat-toolbar class="custom-toolbar">
         <span>Inserir novas imagens</span>
         <span class="example-spacer"></span>
@@ -7,23 +8,38 @@
         </button>
     </mat-toolbar>
 
-    <mat-form-field class="example-form-field">
-        <mat-label>Informar descrição imagem</mat-label>
-        <input id="descricao" autocomplete="off" matInput type="text" [(ngModel)]="value">
-        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-        </button>
-    </mat-form-field>
-
-    <div class="area-arquivo">
-
+    <input multiple (change)="adicionarArquivos($event.target.files)" id="upload" accept="image/png, image/jpeg"
+        style="display: none" #upload type="file">
+    <div (onFileDropped)="adicionarArquivos($event)" appDragDrop class="area-arquivo">
+        <p style="color: grey"><strong><span (click)="upload.click()" style="cursor: pointer">Clique
+                    aqui</span></strong> ou arraste os arquivos para cá</p>
     </div>
+
+    <!--   <div *ngFor="let anexo of listaAnexos" >
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>image</mat-icon>
+            Teste
+          </button>
+    </div> -->
+
+
+    <div style="overflow: auto; max-height: 200px;">
+        <mat-chip-list *ngFor="let anexo of listaAnexos" aria-label="Fish selection">
+            <mat-chip class="my-class" selected color="accent">
+                <mat-icon style="margin-right: 5px;">image</mat-icon>
+                {{anexo.name}}
+                <mat-icon (click)="removerAnexo(anexo)" matChipRemove>cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+
     <mat-toolbar style="padding-top: 10px;" class="custom-toolbar">
-        <mat-progress-bar style="width: 100%;" *ngIf="mostrarCarregando" color="warn" mode="indeterminate"></mat-progress-bar>
+        <mat-progress-bar style="width: 100%;" *ngIf="mostrarCarregando" color="warn" mode="indeterminate">
+        </mat-progress-bar>
         <span class="example-spacer"></span>
-        <button (click)="enviarImagens()" matTooltip="Enviar imagens" matTooltipPosition="left" mat-icon-button color="primary"
-            aria-label="Example icon button with a home icon">
-            <mat-icon>schedule_send</mat-icon>
+        <button (click)="enviarImagens()" matTooltip="Enviar imagens" matTooltipPosition="left" mat-icon-button
+            color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>cloud_upload</mat-icon>
         </button>
     </mat-toolbar>
 </div>

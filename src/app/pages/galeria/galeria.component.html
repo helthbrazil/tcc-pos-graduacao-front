@@ -1,14 +1,17 @@
-<app-nova-imagem [mostrarComponente]="mostrarAdicionarImagem" (buscarImagens)="buscarImagens($event)" *ngIf="mostrarAdicionarImagem"></app-nova-imagem>
-
-<div class="container-fluid" style="background-color: #f2f2f2;">
-    <div class="row">
-        <div *ngFor="let item of fotografias" class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-            <app-fotografia [dado]="item"></app-fotografia>
+<div style="overflow-y: auto;">
+    <app-nova-imagem [mostrarComponente]="mostrarAdicionarImagem" (buscarImagens)="buscarImagens($event)"
+        *ngIf="mostrarAdicionarImagem"></app-nova-imagem>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div *ngFor="let item of fotografias" class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
+                <app-fotografia (excluirImagemEvent)="excluirImagem(item)" [dado]="item"></app-fotografia>
+            </div>
         </div>
     </div>
+    
+    <button (click)="adicionarNovaImagem()" matTooltip="Adicionar nova fotografia" matTooltipPosition="left"
+        class="flutuante" mat-fab color="accent">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
-
-<button (click)="adicionarNovaImagem()" matTooltip="Adicionar nova fotografia" matTooltipPosition="left"
-    class="flutuante" mat-fab color="accent"> 
-    <mat-icon>add</mat-icon>
-</button>

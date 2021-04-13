@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-fotografia',
@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FotografiaComponent implements OnInit {
   @Input() dado: any;
+  @Output() excluirImagemEvent = new EventEmitter();
   hover = false;
   mostrarImagem = false;
   constructor() { }
@@ -15,6 +16,10 @@ export class FotografiaComponent implements OnInit {
     setTimeout(() => {
       this.mostrarImagem = true;
     }, 1000);
+  }
+
+  excluirImagem(){
+    this.excluirImagemEvent.emit(true);
   }
 
 }
