@@ -8,19 +8,24 @@ import { Imagem } from '../models/imagem';
 })
 export class DocumentosService {
 
+  private readonly URL_REMOVER_IMAGEM = `http://localhost:8080/aws/excluirImagem`
   private readonly URL_BUSCA_FOTOS = `http://localhost:8080/aws/getImages`;
   private readonly URL_ENVIO_FOTOGRAFIAS = `http://localhost:8080/aws/uploadFiles`;
 
   constructor(private http: HttpClient) { }
 
-  buscarImagens(): Observable<Imagem[]>{
+  buscarImagens(): Observable<Imagem[]> {
     return this.http.get<Imagem[]>(this.URL_BUSCA_FOTOS);
   }
 
-  enviarImagens(anexos: Array<File>){
-    debugger;
+  excluirImagem(imagem: Imagem) {
+    debugger
+    return this.http.post(this.URL_REMOVER_IMAGEM, imagem);
+  }
+
+  enviarImagens(anexos: Array<File>) {
     let formdata = new FormData();
-    if(anexos && anexos.length > 0){
+    if (anexos && anexos.length > 0) {
       anexos.forEach(file => {
         formdata.append('files', file, file['name']);
       });

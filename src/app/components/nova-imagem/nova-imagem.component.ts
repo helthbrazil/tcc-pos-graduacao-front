@@ -34,7 +34,6 @@ export class NovaImagemComponent implements OnInit {
   }
 
   adicionarArquivos(fileList: FileList) {
-    debugger
     let quantidadeArquivos = fileList.length;
     if (this.listaAnexos) {
       for (let i = 0; i < quantidadeArquivos; i++) {
