@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxPlatformInfo } from 'ngx-platform-info';
 import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
@@ -8,13 +9,21 @@ import { LoginService } from 'src/app/shared/services/login.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
-  opened = true;
-  constructor(private router: Router, private loginService: LoginService) { }
+  opened = false;
+  modeDrawer= 'over';
+
+  constructor(private router: Router, private loginService: LoginService,
+    private ngxPlatformInfo: NgxPlatformInfo) {
+    if (!ngxPlatformInfo.mobile) {
+      this.opened = true;
+      this.modeDrawer = 'side';
+    }
+  }
 
   ngOnInit(): void {
   }
 
-  deslogar(){
+  deslogar() {
     this.loginService.deslogar().subscribe();
   }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpBackend, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,8 @@ import { Router } from '@angular/router';
 export class LoginService {
   private httpClientLogin: HttpClient;
 
-  // private readonly URL_LOGIN = 'https://springboot-jwt-brazil.herokuapp.com/login';
-  private readonly URL_LOGIN = 'http://localhost:8080/login';
-
-  // private readonly URL_ISLOGGED = 'https://springboot-jwt-brazil.herokuapp.com/isLogged';
-  private readonly URL_ISLOGGED = 'http://localhost:8080/aws/isLogged';
+  private readonly URL_LOGIN = `${environment.urlApi}login`;
+  private readonly URL_ISLOGGED = `${environment.urlApi}aws/isLogged`;
 
   constructor(handler: HttpBackend, private httpClient: HttpClient, private router: Router) {
     this.httpClientLogin = new HttpClient(handler);

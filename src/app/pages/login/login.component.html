@@ -30,8 +30,8 @@
 </div>
 
 <!-- Mobile -->
-<div style="margin-top: 50px; padding: 20px" *ngIf="isMobile" [class.mat-elevation-z8]="true">
-    <img class="center" src="https://www.pucminas.br/ics/PublishingImages/site%20logo.jpg" width="315"
+<div style="margin-top: 50px; padding: 20px" *ngIf="isMobile">
+    <img class="center-img" src="https://www.pucminas.br/ics/PublishingImages/site%20logo.jpg" width="400"
     alt="Photo of a Shiba Inu">
   <form #form="ngForm" [formGroup]="formulario" (ngSubmit)="logar()" class="example-form">    
     <div class="center">
@@ -39,14 +39,12 @@
         <mat-label>Nome</mat-label>
         <input required formControlName="username" matInput type="text" value="">
         <mat-error *ngIf="formHasError">Usuário é obrigatório</mat-error>
-        <mat-hint>Informe o usuário</mat-hint>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Senha</mat-label>
         <input required formControlName="password" type="password" matInput value="">
         <mat-error *ngIf="formHasError">Senha é obrigatória</mat-error>
-        <mat-hint>Informe a senha</mat-hint>
       </mat-form-field>
     </div>
     <button style="width: 100%; height: 55px; margin-top: 10px;" mat-raised-button type="submit" color="primary">Logar</button>

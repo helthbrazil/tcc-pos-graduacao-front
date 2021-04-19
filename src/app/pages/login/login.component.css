@@ -7,6 +7,13 @@
   .center {
     margin: auto;
   }
+
+  .center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
   
   .mat-form-field-flex{
     width: 97% !important;

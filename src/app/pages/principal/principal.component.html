@@ -19,7 +19,7 @@
 </mat-toolbar>
 
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer opened="opened" #drawer class="example-sidenav menu-lateral" mode="side">
+    <mat-drawer [opened]="opened" #drawer class="example-sidenav menu-lateral" [mode]="modeDrawer">
         <mat-selection-list [multiple]="false">
 
             <mat-list-item role="listitem">

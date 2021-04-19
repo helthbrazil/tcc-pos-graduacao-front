@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Imagem } from '../models/imagem';
 
 @Injectable({
@@ -8,9 +9,9 @@ import { Imagem } from '../models/imagem';
 })
 export class DocumentosService {
 
-  private readonly URL_REMOVER_IMAGEM = `http://localhost:8080/aws/excluirImagem`
-  private readonly URL_BUSCA_FOTOS = `http://localhost:8080/aws/getImages`;
-  private readonly URL_ENVIO_FOTOGRAFIAS = `http://localhost:8080/aws/uploadFiles`;
+  private readonly URL_REMOVER_IMAGEM = `${environment.urlApi}aws/excluirImagem`
+  private readonly URL_BUSCA_FOTOS = `${environment.urlApi}aws/getImages`;
+  private readonly URL_ENVIO_FOTOGRAFIAS = `${environment.urlApi}aws/uploadFiles`;
 
   constructor(private http: HttpClient) { }
 

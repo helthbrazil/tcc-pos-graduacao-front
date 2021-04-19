@@ -11,7 +11,7 @@
 @media only screen and (max-width: 600px) {
     .example-form-field {
         padding-top: 10px;
-        width: 200px;
+        width: 300;
       }
     
       .custom-toolbar {
@@ -25,14 +25,14 @@
         text-align: center !important;
         padding: 80px 0;
         border: 5px dotted #e8e8e8;
-        height: 200px;
+        height: 300;
     }
 }
 
 @media only screen and (min-width: 600px) {
     .example-form-field {
         padding-top: 10px;
-        width: 400px;
+        width: 500px;
       }
     
       .custom-toolbar {
@@ -46,7 +46,7 @@
         padding: 180px 0;
         text-align: center !important;
         border: 5px dotted #e8e8e8;
-        height: 400px;
+        height: 500px;
      } 
 }
 
